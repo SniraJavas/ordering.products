@@ -92,9 +92,9 @@ namespace ordering.products.api
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidAudience = Configuration["JWT: ValidAudience"],
-                    ValidIssuer = Configuration["JWT: ValidIssuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT: SecretKey"]))
+                    ValidAudience = Configuration["Jwt:ValidAudience"],
+                    ValidIssuer = Configuration["Jwt:ValidIssuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SecretKey"]))
                 };
             });
 
