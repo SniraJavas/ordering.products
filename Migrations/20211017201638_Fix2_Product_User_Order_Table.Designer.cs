@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ordering.products.api.DBContext;
 
 namespace ordering.products.api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211017201638_Fix2_Product_User_Order_Table")]
+    partial class Fix2_Product_User_Order_Table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,21 +152,6 @@ namespace ordering.products.api.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Ordering.Products.Api.Model.AddressType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AddressType");
-                });
-
             modelBuilder.Entity("ordering.products.api.IdentityAuth.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -261,17 +248,11 @@ namespace ordering.products.api.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
                     b.Property<string>("AddressId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ProductId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<double>("Total")
                         .HasColumnType("float");
@@ -282,8 +263,6 @@ namespace ordering.products.api.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Orders");
                 });
@@ -299,6 +278,9 @@ namespace ordering.products.api.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("OrderId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
@@ -309,6 +291,8 @@ namespace ordering.products.api.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
 
                     b.ToTable("Products");
                 });
@@ -370,13 +354,19 @@ namespace ordering.products.api.Migrations
                         .WithMany()
                         .HasForeignKey("AddressId");
 
-                    b.HasOne("ordering.products.api.Model.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId");
-
                     b.Navigation("Address");
+                });
 
-                    b.Navigation("Product");
+            modelBuilder.Entity("ordering.products.api.Model.Product", b =>
+                {
+                    b.HasOne("ordering.products.api.Model.Order", null)
+                        .WithMany("OrderedProducts")
+                        .HasForeignKey("OrderId");
+                });
+
+            modelBuilder.Entity("ordering.products.api.Model.Order", b =>
+                {
+                    b.Navigation("OrderedProducts");
                 });
 #pragma warning restore 612, 618
         }

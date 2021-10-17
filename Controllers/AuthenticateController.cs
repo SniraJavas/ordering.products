@@ -40,7 +40,7 @@ namespace ordering.products.api.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody] Register model)
+        public async Task<IActionResult> Register([FromBody] User model)
         {
             var userExists = await _userManager.FindByNameAsync(model.Username);
 
@@ -63,7 +63,7 @@ namespace ordering.products.api.Controllers
 
         [HttpPost]
         [Route("register-admin")]
-        public async Task<IActionResult> RegisterAdmin([FromBody] Register model)
+        public async Task<IActionResult> RegisterAdmin([FromBody] User model)
         {
             var userExists = await _userManager.FindByNameAsync(model.Username);
 

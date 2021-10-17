@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ordering.products.api.IdentityAuth;
-
+using ordering.products.api.Model;
+using Ordering.Products.Api.Model;
 
 namespace ordering.products.api.DBContext
 {
@@ -13,10 +14,19 @@ namespace ordering.products.api.DBContext
         
         }
 
+        public ApplicationDbContext()
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
         }
+
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<AddressType> AddressType { get; set; }
+
 
 
     }
