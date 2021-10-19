@@ -5,7 +5,6 @@ import Item4 from '../../images/item4.jpg'
 import Item5 from '../../images/item5.jpg'
 import Item6 from '../../images/item6.jpg'
 import {setProduct, getProduct,removeProduct, clearAll} from '../../service/ProductStorage';
-import {setSelectedProduct, getSelectedProduct,removeSelectedProduct, clearSelected} from '../../service/SelectedProduct';
 import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY,ADD_DELIVERY } from '../actions/action-types/cart-actions'
 
 

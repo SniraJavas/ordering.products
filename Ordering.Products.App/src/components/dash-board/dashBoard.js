@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { addToCart } from '../../redux/actions/cartActions';
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
  class dashBoard extends Component{
     
     handleClick = (id)=>{
@@ -13,18 +15,17 @@ import { addToCart } from '../../redux/actions/cartActions';
 
     render(){
         let itemList = this.props.items.map(item=>{
-            return(
-                <div className="" key={item.id}>
-                            <img src={item.img} alt={item.title}/>
-                        <div className="card-content">
-                        <b className="card-title">{item.title}</b>
-                            <p>{item.desc}</p>
-                            <p><i>Price: R {item.price}</i></p>
-                            <button class="btn btn-success" onClick={()=>{this.handleClick(item.id)}}>Add to Basket</button>
-                        </div>
-                 </div>
-
-            )
+            return <div className="" key={item.id}>
+                <Container class="rounded">
+                  <Row >
+                      <b className="card-title">{item.title}</b>
+                    <Col> <img src={item.img} alt={item.title}/><p class="text-danger"><i>Price: R {item.price}</i></p></Col>
+                    <Col>  <p>{item.desc}</p></Col>
+        
+                    <Col> <button class="btn btn-success" onClick={()=>{this.handleClick(item.id)}}>Add to Basket</button></Col>
+                  </Row>
+                </Container>
+              </div>;
         })
 
         return(

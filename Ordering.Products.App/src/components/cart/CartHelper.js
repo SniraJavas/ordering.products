@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {getProduct }from './../../service/ProductStorage';
 //import { addDELIVERY } from './actions/cartActions'
 class CartHelper extends Component{
-    
+    constructor(props){ 
+        super(props);
+        this.state = {
+            total: getProduct().total
+          };
+
+    }
     componentWillUnmount() {
          if(this.refs.DELIVERY.checked)
               this.props.substractDELIVERY()
@@ -22,16 +29,10 @@ class CartHelper extends Component{
         return(
             <div className="container">
                 <div className="collection">
-                    <li className="collection-item">
-                            <label>
-                                <input type="checkbox" ref="DELIVERY" onChange= {this.handleChecked} />
-                                <span>Delivery(R50)</span>
-                            </label>
-                        </li>
-                        <li className="collection-item"><b>Total: R{this.props.total} </b></li>
+                        <li className="collection-item"><b>Total: R{this.state.total} </b></li>
                     </div>
                     <div className="checkout">
-                        <button className="waves-effect waves-light btn">Checkout</button>
+                        <button className="waves-effect waves-light btn">Complete Order</button>
                     </div>
                  </div>
         )
