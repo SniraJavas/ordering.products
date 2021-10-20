@@ -16,6 +16,7 @@ Singular Systems Assessment for JWT, Ordering Products for Companines and using 
   - Security infrastructure have been in place to demostrate some of the content we covered on our interview using JWT and Microsoft.AspNetCore.Identity;
   
 **  Assumptions :-**
+
     o  Once the order is in the database can not be updated via Reactjs.
     
     o  files containig sensitive data would be excluded from the pushed\updated code using gitIgnore.
