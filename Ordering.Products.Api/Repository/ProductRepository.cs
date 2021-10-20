@@ -1,4 +1,5 @@
-﻿using ordering.products.api.Interfaces;
+﻿using ordering.products.api.DBContext;
+using ordering.products.api.Interfaces;
 using ordering.products.api.Model;
 using System;
 using System.Collections.Generic;
@@ -9,40 +10,40 @@ namespace Producting.Products.Api.Repository
 {
     public class ProductRepository : IProductRepository
     {
-        
-        Product IProductRepository.DeleteProduct(string Id)
+        private readonly ApplicationDbContext _Context;
+
+        public ProductRepository()
         {
-            throw new NotImplementedException();
+            _Context = new ApplicationDbContext();
         }
 
-        Product IProductRepository.EditProduct(Product Product)
+        public ProductRepository(ApplicationDbContext Context)
         {
-            throw new NotImplementedException();
+            _Context = Context;
         }
 
-        Product IProductRepository.GetProductId(string Id)
+        Product IProductRepository.GetProductId(int Id)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                return _Context.Products.Find(Id); ;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error : {0} ", ex.Message);
+                return null;
+            }
         }
 
         List<Product> IProductRepository.GetProducts()
         {
-            throw new NotImplementedException();
+            return _Context.Products.ToList();
         }
 
-        bool IProductRepository.ProductExist(string Id)
+        bool IProductRepository.ProductExist(int Id)
         {
-            throw new NotImplementedException();
-        }
-
-        Product IProductRepository.PostProduct(Product Product)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IProductRepository.save()
-        {
-            throw new NotImplementedException();
+            return _Context.Orders.Any(e => e.Id.Equals(Id));
         }
     }
 }

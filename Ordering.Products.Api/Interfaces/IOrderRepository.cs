@@ -8,8 +8,8 @@ namespace Ordering.Products.Api.Interfaces
 {
     public interface IOrderRepository
     {
-        List<Order> GetOrders();
-        Order GetOrderId(int Id);
+        List<Order> GetOrders(string UserId);
+        Order GetOrderId(int Id , string UserId);
         Order PostOrder(Order Order);
         Order EditOrder(Order Order);
         Order CancelOrder(string Order);

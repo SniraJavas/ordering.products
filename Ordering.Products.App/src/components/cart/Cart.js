@@ -27,8 +27,11 @@ class Cart extends Component{
         this.props.subtractQuantity(id);
     }
     render(){
-        console.log("nfro ",this.state.productsInfo.addedItems)
-        let addedItems = this.state.productsInfo.items.length ?
+        let addedItems = <p>Nothing</p>
+        if(this.state.productsInfo == null){
+            addedItems = <p>You have not ordered anything</p>
+        }else{
+            addedItems =this.state.productsInfo.items.length ?
             (  
                 this.state.productsInfo.addedItems.map(item=>{
                     return <ul class="list-group">
@@ -56,6 +59,8 @@ class Cart extends Component{
              (
                 <p>Nothing.</p>
              )
+        }
+      
        return(
             <div className="container">
                 <div className="row justify-content-center">

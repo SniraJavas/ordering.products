@@ -97,7 +97,7 @@ namespace Ordering.products.api.Repository
             }
         }
 
-        Order IOrderRepository.GetOrderId(int Id)
+        Order IOrderRepository.GetOrderId(int Id, string UserId)
         {
             try {
                 var Order = _Context.Orders.Find(Id);
@@ -116,7 +116,7 @@ namespace Ordering.products.api.Repository
             }
         }
 
-        List<Order> IOrderRepository.GetOrders()
+        List<Order> IOrderRepository.GetOrders(string UserId)
         {
             return _Context.Orders.Where(x => x.Active == true).ToList();
         }

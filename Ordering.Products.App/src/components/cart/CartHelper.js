@@ -6,7 +6,7 @@ class CartHelper extends Component{
     constructor(props){ 
         super(props);
         this.state = {
-            total: getProduct().total
+            total: 0
           };
 
     }

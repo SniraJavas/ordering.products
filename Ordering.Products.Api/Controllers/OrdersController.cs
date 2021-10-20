@@ -16,7 +16,7 @@ namespace Ordering.Products.Api.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly IOrderRepository _Context;
-    
+
 
         public OrdersController(IOrderRepository Context)
         {
@@ -24,17 +24,17 @@ namespace Ordering.Products.Api.Controllers
         }
 
         // GET: api/Orders
-        [HttpGet]
-        public ActionResult<IEnumerable<Order>> GetOrders()
+        [HttpGet("{UserId}")]
+        public ActionResult<IEnumerable<Order>> GetOrders(string UserId)
         {
-            return _Context.GetOrders();
+            return _Context.GetOrders(UserId);
         }
 
         // GET: api/Orders/5
-        [HttpGet("{id}")]
-        public ActionResult<Order> GetOrder(int Id)
+        [HttpGet]
+        public ActionResult<Order> GetOrder(int Id , string UserId)
         {
-            var Order = _Context.GetOrderId(Id);
+            var Order = _Context.GetOrderId(Id,UserId);
 
             if (Order == null)
             {
@@ -46,7 +46,7 @@ namespace Ordering.Products.Api.Controllers
 
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult PutOrder(int Id, Order Order)
         {
             if (Id != Order.Id)
@@ -112,10 +112,10 @@ namespace Ordering.Products.Api.Controllers
         }
 
         // DELETE: api/Orders/5
-        [HttpDelete("{id}")]
-        public IActionResult DeleteOrder(int Id)
+        [HttpDelete]
+        public IActionResult DeleteOrder(int Id,string userId)
         {
-            var order = _Context.GetOrderId(Id);
+            var order = _Context.GetOrderId(Id, userId);
             if (order == null)
             {
                 return NotFound();
@@ -127,9 +127,9 @@ namespace Ordering.Products.Api.Controllers
         }
 
         [HttpPost("Cancel/{id}")]
-        public async Task<IActionResult> CancelOrder(int Id)
+        public async Task<IActionResult> CancelOrder(int Id, string UserId)
         {
-            var order = _Context.GetOrderId(Id);
+            var order = _Context.GetOrderId(Id,UserId);
             if (order == null)
             {
                 return NotFound();
