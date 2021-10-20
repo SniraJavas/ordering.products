@@ -16,7 +16,7 @@ How does it work  :-
   - Security infrastructure have been in place to demostrate some of the content we covered on our interview using JWT and Microsoft.AspNetCore.Identity;
   
   Assumptions :
-    - Once the order is in the database can not be updated via Reactjs.
+      - Once the order is in the database can not be updated via Reactjs.
     - files containig sensitive data would be excluded from the pushed\updated code using gitIgnore.
     - Due to the time limmit I might have npt been consistent with Good practice in front end.
     - There will be a differnt system to load product i.e CRUD.
