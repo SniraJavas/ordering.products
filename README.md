@@ -16,17 +16,17 @@ How does it work  :-
   - Security infrastructure have been in place to demostrate some of the content we covered on our interview using JWT and Microsoft.AspNetCore.Identity;
   
   Assumptions :
-      - Once the order is in the database can not be updated via Reactjs.
-    - files containig sensitive data would be excluded from the pushed\updated code using gitIgnore.
-    - Due to the time limmit I might have npt been consistent with Good practice in front end.
-    - There will be a differnt system to load product i.e CRUD.
-    - The whole assessmet was to demostrate my capabilities and it was an open assessment that I could drag and be creative.
-    - It was really nice to revisit Reactjs after some time 🤐
+    o  Once the order is in the database can not be updated via Reactjs.
+    o  files containig sensitive data would be excluded from the pushed\updated code using gitIgnore.
+    o  Due to the time limmit I might have npt been consistent with Good practice in front end.
+    o  There will be a differnt system to load product i.e CRUD.
+    o  The whole assessmet was to demostrate my capabilities and it was an open assessment that I could drag and be creative.
+    o  It was really nice to revisit Reactjs after some time 🤐
     
   Tools used :
-    - ASP.Net Core
-    - C#
-    - HTML, CSS, JavaScript,
-    - Bootrap 5
-    - React
-    - SQL Server and SSMS
+    o  ASP.Net Core
+    o  C#
+    o  HTML, CSS, JavaScript,
+    o  Bootrap 5
+    o  React
+    o  SQL Server and SSMS
