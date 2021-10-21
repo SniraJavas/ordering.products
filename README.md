@@ -27,6 +27,8 @@ Singular Systems Assessment for JWT, Ordering Products for Companines and using 
     
     o  The whole assessmet was to demostrate my capabilities and it was an open assessment that I could drag and be creative.
     
+     o The best way to manage my app state and storing data on Reactjs throughout my app is Redux but I got a delay the hence I optioned to use local storage in some parts. 
+    
     o  It was really nice to revisit Reactjs after some time 🤐
     
  **Tools used :-**
