@@ -1,5 +1,5 @@
 # ordering.products
-Singular Systems Assessment for JWT, Ordering Products for Companines and using SSMS to manage Database
+Singular Systems Assessment for JWT, Ordering Products for Companines and using SSMS to manage Database, View for more details......
 
 **How does it work  :-**
   - Clients\User records will be added on on swagger /api/Authenticate/register
